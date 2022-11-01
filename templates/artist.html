@@ -28,9 +28,7 @@
                         <div class="album-details">
                             <!-- title -->
                             <h4>{{ artist.name }}</h4>
-                            <!-- composed by -->
-                            {#                        <h5>By Himanshu</h5>#}
-                            <!-- paragraph -->
+
                             <p>{{ artist.bio }}</p>
                             <!-- button -->
 
@@ -46,20 +44,19 @@
                                         <div class="song-info">
                                             <!-- song title -->
                                             <h3>{{ music.name }}</h3>
-                                            <h4><strong>Album</strong>:<a
+                                            <h4>
+                                                <strong>Album</strong>:<a
                                                     href="{% url 'music:album' music.album.id %}">{{ music.album }}</a>
-                                                &nbsp;|&nbsp; <strong>Genre</strong>: <a
-                                                        href="{% url 'music:genre' music.genre.id %}">{{ music.genre }}</a>
-
+                                                &nbsp;|&nbsp;
+                                                <strong>Genre</strong>:<a
+                                                    href="{% url 'music:genre' music.genre.id %}">{{ music.genre }}</a>
                                             </h4>
                                         </div>
                                         <!-- music icon -->
                                         <div class="music-icon">
                                             <audio controls>
                                                 <source src="{{ music.file.url }}" type="audio/mpeg">
-
                                             </audio>
-
                                         </div>
                                         <div class="clearfix"></div>
                                     </li>

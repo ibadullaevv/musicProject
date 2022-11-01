@@ -47,7 +47,8 @@
                                         <div class="song-info">
                                             <!-- song title -->
                                             <h3>{{ music.name }}</h3>
-                                            <h4><strong>Genre</strong>: <a href="{% url 'music:genre' music.genre.id %}">{{ music.genre }}</a>
+                                            <h4><strong>Genre</strong>: <a
+                                                    href="{% url 'music:genre' music.genre.id %}">{{ music.genre }}</a>
                                                 &nbsp;|&nbsp; <strong>Singer</strong>:
                                                 {% for artist in music.artist.all %}
                                                     <a href="{% url 'music:artist' artist.id %}">{{ artist.name }}</a>

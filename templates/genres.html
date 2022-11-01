@@ -17,8 +17,9 @@
                         <div class="col-md-3 col-sm-6">
                             <!-- why work with us item -->
                             <div class="why-item  delay-four">
-                            <span class="why-number"><a
-                                    href="{% url 'music:genre' genre.id %}">{{ genre.name }}</a></span>
+                            <span class="why-number">
+                                <a href="{% url 'music:genre' genre.id %}">{{ genre.name }}</a>
+                            </span>
                             </div>
                         </div>
                     {% endfor %}
