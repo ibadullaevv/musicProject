@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- about -->
+    <div class="about" id="team">
+        <div class="container">
+            <!-- default heading -->
+            <div class="default-heading">
+                <!-- heading -->
+                <h2>Singers</h2>
+            </div>
+        </div>
+        <!-- our team -->
+        <div class="team">
+            <div class="container">
+                <!-- Team Member's Details -->
+                <div class="team-content">
+                    <div class="row">
+                        {% for artist in artists %}
+                            <div class="col-md-3 col-sm-6">
+                                <!-- Team Member -->
+                                <div class="team-member  delay-one">
+                                    <!-- Image Hover Block -->
+                                    <div class="member-img">
+                                        <!-- Image  -->
+                                        <img class="img-responsive" src="{{ artist.photo.url }}" alt=""/>
+                                    </div>
+                                    <!-- Member Details -->
+                                    <h3><a href="{% url 'music:artist' artist.id %}">{{ artist.name }}</a></h3>
+                                    <span class="designation">{{ artist.bio|slice:":25" }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about end -->
+{% endblock %}
+

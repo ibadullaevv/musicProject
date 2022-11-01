@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <!-- Hero block area -->
+    <div id="latestalbum" class="hero pad">
+        <div class="container">
+            <!-- hero content -->
+            <div class="hero-content ">
+                <!-- heading -->
+                <h2>Latest Musics</h2>
+                <hr>
+
+            </div>
+            <!-- hero play list -->
+            <div class="hero-playlist">
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6 ">
+                        <!-- play list -->
+                        <div class="playlist-content">
+                            <ul class="list-unstyled">
+                                {% for music in musics %}
+                                    <li class="playlist-number">
+                                        <!-- song information -->
+                                        <div class="song-info">
+                                            <!-- song title -->
+                                            <h3>{{ music.name }}</h3>
+                                            <h4><strong>Album</strong>: <a
+                                                    href="{% url 'music:album' music.album.id %}">{{ music.album }}</a>
+                                                &nbsp;|&nbsp;
+                                                <strong>Genre</strong>: <a
+                                                        href="{% url 'music:genre' music.genre.id %}">{{ music.genre }}</a>
+                                                &nbsp;|&nbsp; <strong>Singers</strong>:
+                                                {% for artist in music.artist.all %}
+                                                    <a href="{% url 'music:artist' artist.id %}">{{ artist.name }}</a>
+
+                                                {% endfor %}
+                                            </h4>
+                                        </div>
+                                        <!-- music icon -->
+                                        <div class="music-icon">
+                                            <audio controls>
+                                                {% if music.file %}
+                                                <source src="{{ music.file.url }}" type="audio/mpeg">
+                                                {% endif %}
+
+                                            </audio>
+
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!--/ hero end -->

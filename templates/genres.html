@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- work with us -->
+    <div class="work-with-us pad" id="joinus">
+        <div class="container">
+            <!-- default heading -->
+            <div class="default-heading">
+                <!-- heading -->
+                <h2>Genres</h2>
+            </div>
+            <!-- why work with us content -->
+            <div class="why-content">
+
+                <div class="row">
+                    {% for genre in genres %}
+                        <div class="col-md-3 col-sm-6">
+                            <!-- why work with us item -->
+                            <div class="why-item  delay-four">
+                            <span class="why-number"><a
+                                    href="{% url 'music:genre' genre.id %}">{{ genre.name }}</a></span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--/ end work with us -->
+{% endblock %}
+

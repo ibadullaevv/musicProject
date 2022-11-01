@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- featured abbum -->
+<div class="featured pad" id="featuredalbum">
+    <div class="container">
+        <!-- default heading -->
+        <div class="default-heading">
+            <!-- heading -->
+            <h2>Featured Album</h2>
+        </div>
+        <!-- featured album elements -->
+        <div class="featured-element">
+            <div class="row">
+                {% for album in albums %}
+                <div class="col-md-4 col-sm-6">
+                    <!-- featured item -->
+                    <div class="featured-item ">
+                        <!-- image container -->
+                        <div class="figure">
+                            <!-- image -->
+                            <img class="img-responsive" src="{{ album.image.url }}" alt=""/>
+                            <!-- paragraph -->
+{#                            <p>There are many variations of passages available, but the majority have suffered Lorem#}
+{#                                alteration in some form, by injected look even slightly believable.</p>#}
+                        </div>
+                        <!-- featured information -->
+                        <div class="featured-item-info">
+                            <!-- featured title -->
+                            <h4>{{ album.name }}</h4>
+                            <!-- horizontal line -->
+                            <hr/>
+{#                            <!-- some responce from social medial or web likes -->#}
+{#                            <p>1024+ <span class="label label-theme">Like</span> &nbsp;&nbsp; 825+ <span#}
+{#                                    class="label label-theme">Love</span></p>#}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- features end -->
+{% endblock %}
+
