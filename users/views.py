@@ -1,6 +1,6 @@
 from django.contrib.auth import login
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import UserRegistrationForm
 
@@ -14,9 +14,10 @@ def register(request):
                 user_form.cleaned_data['password'])
             new_user.save()
             login(request, new_user)
-            return render(request,
-                          'account/register_done.html',
-                          {'new_user': new_user})
+            # return render(request,
+            #               'account/register_done.html',
+            #               {'new_user': new_user})
+            return redirect('music:home')
         else:
             return HttpResponse('Data is not valid')
 
