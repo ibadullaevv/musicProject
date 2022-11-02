@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.files import File
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from .models import Profile
 

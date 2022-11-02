@@ -14,14 +14,37 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, re_path, include
 from django.conf.urls.static import static
 from musicProject import settings
 
+# drf_yasg code starts here
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Music Project API",
+        default_version='v1',
+        description="Music project API",
+
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
+# ends here
+
 urlpatterns = [
+    re_path(r'^doc(?P<format>\.json|\.yaml)$',
+            schema_view.without_ui(cache_timeout=0), name='schema-json'),  # <-- Here
+    path('doc/', schema_view.with_ui('swagger', cache_timeout=0),
+         name='schema-swagger-ui'),  # <-- Here
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
+         name='schema-redoc'),
     path('admin/', admin.site.urls),
     path('', include('music.urls')),
-    path('users/', include('users.urls'))
+    path('users/', include('users.urls')),
+    path('api/', include('api.urls'))
 
 ]
 if settings.DEBUG:
