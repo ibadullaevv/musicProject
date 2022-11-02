@@ -20,7 +20,8 @@ from musicProject import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('music.urls'))
+    path('', include('music.urls')),
+    path('users/', include('users.urls'))
 
 ]
 if settings.DEBUG:

@@ -61,6 +61,13 @@
                         <li><a href="{% url 'music:albums' %}">Albums</a></li>
                         <li><a href="{% url 'music:genres' %}">Genres</a></li>
                         <li><a href="{% url 'music:artists' %}">Artists</a></li>
+                        <li><a href="{% url 'users:register' %}">Registration</a></li>
+                        {% if request.user.is_authenticated %}
+                            Hello {{ request.user.username }},
+                            <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{% url 'users:login' %}">Login</a></li>
+                        {% endif %}
 
                     </ul>
                 </div><!-- /.navbar-collapse -->
