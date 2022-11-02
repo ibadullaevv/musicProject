@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -42,19 +41,6 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class Profile(models.Model):
-    user = models.OneToOneField(User, verbose_name='User', related_name='profile', on_delete=models.CASCADE)
-    avatar = models.ImageField()
-    birthday = models.DateField()
-    balance = models.DecimalField()
-
-    class Meta:
-        pass
-
-    def __str__(self):
-        pass
 
 
 class Album(Base):
