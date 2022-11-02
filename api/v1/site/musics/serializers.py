@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-from api.v1.site.artist.serializers import ArtistListSerializer
 from music.models import Music
 
 
@@ -9,8 +8,8 @@ from music.models import Music
 class MusicListSerializer(serializers.ModelSerializer):
     genre = serializers.CharField()
     album = serializers.CharField()
+    artist = serializers.StringRelatedField(many=True)
 
-    # artist = ArtistListSerializer(read_only=True, many=True)
     class Meta:
         model = Music
         fields = [

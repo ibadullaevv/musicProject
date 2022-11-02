@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from music.models import Music, Album, Genre, Artist
-
+from api.v1.site.musics.serializers import MusicListSerializer
+from music.models import Genre
 
 
 # -------- Genre Serializers --------
@@ -25,11 +25,14 @@ class GenreCreateSerializer(serializers.ModelSerializer):
 
 
 class GenreDetailSerializer(serializers.ModelSerializer):
+    musics = MusicListSerializer(read_only=True, many=True)
+
     class Meta:
         model = Genre
         fields = [
             'id',
             'name',
+            'musics',
         ]
 
 
@@ -40,6 +43,5 @@ class GenreUpdateSerializer(serializers.ModelSerializer):
             'id',
             'name',
         ]
-
 
 # -------- End Genre Serializers --------

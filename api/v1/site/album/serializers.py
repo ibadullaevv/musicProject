@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from api.v1.site.musics.serializers import MusicListSerializer
 from music.models import Album
 
 
@@ -28,6 +29,8 @@ class AlbumCreateSerializer(serializers.ModelSerializer):
 
 
 class AlbumDetailSerializer(serializers.ModelSerializer):
+    musics = MusicListSerializer(read_only=True, many=True)
+
     class Meta:
         model = Album
         fields = [
@@ -35,6 +38,7 @@ class AlbumDetailSerializer(serializers.ModelSerializer):
             'name',
             'image',
             'artist',
+            'musics',
         ]
 
 
