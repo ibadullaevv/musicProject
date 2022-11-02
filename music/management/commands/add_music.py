@@ -11,17 +11,29 @@ class Command(BaseCommand):
         parser.add_argument('quantity', type=int, nargs='?', default=1)
 
     def handle(self, *args, **options):
-        # quantity = options.get('quantity') if 'quantity' in options else 1
         quantity = options.get('quantity')
+        artist, album = self.get_params()
 
         for i in range(quantity):
-            music = random(Music.objects.all())
             genre = random(Genre.objects.all())
-            artist = random(Artist.objects.all())
-            album = random(Album.objects.all())
+            music = random(Music.objects.all())
+            self.create_music(music, genre, artist, album)
 
-            music.id = None
-            music.genre = genre
-            music.album = album
-            music.save()
-            music.artist.add(artist)
+    @staticmethod
+    def create_music(music, genre, artist, album):
+        """Added music in db"""
+
+        music.id = None
+        music.genre = genre
+        music.album = album
+        music.save()
+        music.artist.add(artist)
+
+    @staticmethod
+    def get_params() -> tuple:
+        """Return randoms instances"""
+
+        album = random(Album.objects.all())
+        artist = random(Artist.objects.all())
+
+        return artist, album
