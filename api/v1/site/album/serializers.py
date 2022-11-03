@@ -28,18 +28,18 @@ class AlbumListSerializer(serializers.ModelSerializer):
 #         ]
 #
 #
-# class AlbumDetailSerializer(serializers.ModelSerializer):
-#     musics = MusicListSerializer(read_only=True, many=True)
-#
-#     class Meta:
-#         model = Album
-#         fields = [
-#             'id',
-#             'name',
-#             'image',
-#             'artist',
-#             'musics',
-#         ]
+class AlbumDetailSerializer(serializers.ModelSerializer):
+    musics = MusicListSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Album
+        fields = [
+            'id',
+            'name',
+            'image',
+            'artist',
+            'musics',
+        ]
 #
 #
 # class AlbumUpdateSerializer(serializers.ModelSerializer):

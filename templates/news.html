@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+<br><br><br><br>
+
+{% block content %}
+    {% for i in response %}
+
+        {{ i.totalResults }}
+    {% endfor %}
+{% endblock %}

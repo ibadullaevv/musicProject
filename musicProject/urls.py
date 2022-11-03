@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.conf.urls.static import static
 from musicProject import settings
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 # drf_yasg code starts here
 from rest_framework import permissions
@@ -44,7 +48,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('music.urls')),
     path('users/', include('users.urls')),
-    path('api/', include('api.urls'))
+    path('news/', include('news.urls')),
+    path('api/', include('api.urls')),
+    path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
 ]
 if settings.DEBUG:

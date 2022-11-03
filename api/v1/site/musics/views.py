@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .filters import MusicListFilter
+# from .filters import MusicListFilter
 from .serializers import *
 
 
@@ -13,19 +13,14 @@ class MusicListView(ListAPIView):
     queryset = Music.objects.all()
     serializer_class = MusicListSerializer
     # filterset_class = MusicListFilter
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['genre']
+    # filter_backends = [DjangoFilterBackend]
+    # filterset_fields = ['genre', 'artist', 'album']
+    filterset_fields = {
+        'genre': ["in", "exact"],
+        'artist': ["in", "exact"],
+        'album': ["in", "exact"],
+    }
     http_method_names = ('get',)
-
-    # def list(self, request):
-    #     query_set = Music.objects.all()
-    #     return Response(self.serializer_class(query_set, many=True).data,
-    #                     status=status.HTTP_200_OK)
-    #
-    # def retrieve(self, request, pk=None):
-    #     instance = self.get_object()
-    #     return Response(self.serializer_class(instance).data,
-    #                     status=status.HTTP_200_OK)
 
 # ----Music Views--------
 # class MusicListView(ListAPIView):
