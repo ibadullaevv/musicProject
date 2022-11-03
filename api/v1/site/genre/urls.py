@@ -1,13 +1,20 @@
-from django.urls import path
+from rest_framework import routers
+from . import views
 
-from .views import *
+app_name = 'music'
 
-urlpatterns = [
-    # --------Music --------
-    path('list/', GenreListView.as_view()),
-    path('create/', GenreCreateView.as_view()),
-    path('detail/<int:pk>/', GenreDetailView.as_view()),
-    path('update/<int:pk>/', GenreUpdateView.as_view()),
-    path('delete/<int:pk>/', GenreDeleteView.as_view()),
+router = routers.DefaultRouter()
+router.register(r'', views.GenreViewSet, basename="genre")
 
-]
+urlpatterns = router.urls
+
+# urlpatterns = [
+#     # --------Music --------
+#     path('genres/', GenreViewSet.as_view()),
+#     # path('list/', GenreListView.as_view()),
+#     # path('create/', GenreCreateView.as_view()),
+#     # path('detail/<int:pk>/', GenreDetailView.as_view()),
+#     # path('update/<int:pk>/', GenreUpdateView.as_view()),
+#     # path('delete/<int:pk>/', GenreDeleteView.as_view()),
+#
+# ]

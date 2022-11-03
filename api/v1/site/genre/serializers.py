@@ -15,33 +15,33 @@ class GenreListSerializer(serializers.ModelSerializer):
         ]
 
 
-class GenreCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Genre
-        fields = [
-            'id',
-            'name',
-        ]
-
-
-class GenreDetailSerializer(serializers.ModelSerializer):
-    musics = MusicListSerializer(read_only=True, many=True)
-
-    class Meta:
-        model = Genre
-        fields = [
-            'id',
-            'name',
-            'musics',
-        ]
-
-
-class GenreUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Genre
-        fields = [
-            'id',
-            'name',
-        ]
+# class GenreCreateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Genre
+#         fields = [
+#             'id',
+#             'name',
+#         ]
+#
+#
+# class GenreDetailSerializer(serializers.ModelSerializer):
+#     musics = MusicListSerializer(read_only=True, many=True)
+#
+#     class Meta:
+#         model = Genre
+#         fields = [
+#             'id',
+#             'name',
+#             'musics',
+#         ]
+#
+#
+# class GenreUpdateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Genre
+#         fields = [
+#             'id',
+#             'name',
+#         ]
 
 # -------- End Genre Serializers --------

@@ -21,43 +21,43 @@ class MusicListSerializer(serializers.ModelSerializer):
             'artist',
         ]
 
-
-class MusicCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Music
-        fields = [
-            'id',
-            'name',
-            'file',
-            'genre',
-            'album',
-            'artist',
-        ]
-
-
-class MusicDetailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Music
-        fields = [
-            'id',
-            'name',
-            'file',
-            'genre',
-            'album',
-            'artist',
-        ]
-
-
-class MusicUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Music
-        fields = [
-            'id',
-            'name',
-            'file',
-            'genre',
-            'album',
-            'artist',
-        ]
+#
+# class MusicCreateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Music
+#         fields = [
+#             'id',
+#             'name',
+#             'file',
+#             'genre',
+#             'album',
+#             'artist',
+#         ]
+#
+#
+# class MusicDetailSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Music
+#         fields = [
+#             'id',
+#             'name',
+#             'file',
+#             'genre',
+#             'album',
+#             'artist',
+#         ]
+#
+#
+# class MusicUpdateSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Music
+#         fields = [
+#             'id',
+#             'name',
+#             'file',
+#             'genre',
+#             'album',
+#             'artist',
+#         ]
 
 # -------- End Music Serializers --------
