@@ -1,10 +1,67 @@
 {% extends 'base.html' %}
 {% load static %}
-<br><br><br><br>
+
 
 {% block content %}
-    {% for i in response %}
+    <!-- events -->
+    <div class="events parallax-three pad" id="events">
+        <div class="container">
+            <h2>Search country</h2>
+            <form action="" method="get">
+                <input type="text" name="country">
+                <button type="submit" value="Search">Search</button>
+            </form>
+            <!-- default heading -->
+            <div class="default-heading-shadow">
+                <!-- heading -->
 
-        {{ i.totalResults }}
-    {% endfor %}
+                <h2>News</h2>
+            </div>
+            <!-- events element -->
+            <div class="events-element">
+                <div class="row">
+                    {% for article in articles %}
+                        <div class="col-md-6 col-sm-6">
+                            <!-- event item -->
+                            <div class="events-item ">
+                                <!-- image container -->
+                                <div class="figure">
+                                    <!-- event date -->
+                                    <div class="event-date">
+                                        <span class="emonth">{{ article.publishedAt }}</span>
+                                        <div class="clearfix"></div>
+                                        <!-- time -->
+                                        {#                                    <span class="etime">06:30 pm</span>#}
+                                    </div>
+                                    <!-- event location -->
+                                    <span class="event-location"><i class="fa fa-user"></i> {{ article.author }}</span>
+                                    <!-- image -->
+                                    <img class="img-responsive" src="{{ article.urlToImage }}" alt=""/>
+                                    <!-- image hover -->
+                                    <div class="img-hover">
+                                        <!-- hover icon -->
+                                        <a href="#"><i class="fa fa-play-circle"></i></a>
+                                    </div>
+                                </div>
+                                <!-- event information -->
+                                <div class="event-info">
+                                    <!-- event title -->
+                                    <h3>{{ article.title }}</h3>
+                                    <!-- horizontal line -->
+                                    <hr/>
+                                    <!-- paragraph -->
+                                    <p>{{ article.description }} <a href="{{ article.url }}">more</a></p>
+                                    <!-- buy ticket button link -->
+                                    {#                                <button href="#bookTicket" class="btn btn-lg btn-theme" data-toggle="modal">Book#}
+                                    {#                                    Ticket#}
+                                    {#                                </button>#}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- events end -->
 {% endblock %}
